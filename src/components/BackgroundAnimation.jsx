@@ -7,19 +7,22 @@ export default function BackgroundAnimation() {
   useEffect(() => {
     // GSAP Context for easy cleanup
     const ctx = gsap.context(() => {
-      const shapes = gsap.utils.toArray('.gsap-shape');
+      const orbs = gsap.utils.toArray('.glow-orb');
       
-      shapes.forEach((shape) => {
-        // Random floating animation for each shape
-        gsap.to(shape, {
-          y: `+=${Math.random() * 150 + 50}`,
-          x: `+=${Math.random() * 100 - 50}`,
-          rotation: Math.random() * 120 - 60,
-          duration: 15 + Math.random() * 15,
+      orbs.forEach((orb, i) => {
+        // Drifting animation for each colored orb
+        const randomX = Math.random() * 200 - 100;
+        const randomY = Math.random() * 150 - 75;
+        
+        gsap.to(orb, {
+          x: `+=${randomX}`,
+          y: `+=${randomY}`,
+          scale: () => Math.random() * 0.3 + 0.85,
+          duration: 15 + i * 5,
           repeat: -1,
           yoyo: true,
           ease: 'sine.inOut',
-          delay: Math.random() * -5, // Start at different times
+          delay: i * -3, // Start at staggered offsets
         });
       });
     }, containerRef);
@@ -36,94 +39,105 @@ export default function BackgroundAnimation() {
         left: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: 0, // Ensure it is behind content
+        zIndex: 0, // Behind all text and sections
         overflow: 'hidden',
         pointerEvents: 'none',
-        background: '#ffffff', // Clean white background
+        background: '#F2F2F2', // Reelo soft off-white/light gray base
       }}
     >
-      {/* 3D Moving Perspective Grid */}
+      {/* Subtle Grid overlay for that premium texture */}
       <div 
-        className="gsap-grid"
         style={{
           position: 'absolute',
-          top: '-50%',
-          left: '-50%',
-          width: '200%',
-          height: '200%',
+          inset: 0,
           backgroundImage: `
-            linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
+            linear-gradient(to right, rgba(0,0,0,0.015) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.015) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px',
-          transformOrigin: 'center top',
-          transform: 'perspective(1000px) rotateX(70deg) translateY(-200px) translateZ(-300px)',
-          animation: 'gridMove 15s linear infinite',
+          backgroundSize: '100px 100px',
+          opacity: 0.8,
         }}
       />
-      <style>{`
-        @keyframes gridMove {
-          0% { transform: perspective(1000px) rotateX(70deg) translateY(-200px) translateZ(-300px); }
-          100% { transform: perspective(1000px) rotateX(70deg) translateY(-120px) translateZ(-300px); }
-        }
-      `}</style>
 
-      {/* Floating Geometric Wireframes */}
-      
-      {/* Wireframe Sphere */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '15%', left: '5%', width: '350px', opacity: 0.04 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="1">
-        <circle cx="50" cy="50" r="48" />
-        <ellipse cx="50" cy="50" rx="48" ry="15" />
-        <ellipse cx="50" cy="50" rx="15" ry="48" />
-        <ellipse cx="50" cy="50" rx="48" ry="30" />
-        <ellipse cx="50" cy="50" rx="30" ry="48" />
-      </svg>
+      {/* Noise Texture Overlay for grain aesthetic */}
+      <div 
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.03, // Ultra-fine, premium aesthetic noise
+          pointerEvents: 'none',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
 
-      {/* Large Outline Ring */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '65%', right: '-5%', width: '500px', opacity: 0.03 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="3">
-        <circle cx="50" cy="50" r="45" />
-      </svg>
+      {/* Vibrant 2D Ambient Glow Orbs */}
+      {/* Orb 1: Reelo Cyan Blue */}
+      <div 
+        className="glow-orb"
+        style={{
+          position: 'absolute',
+          top: '-15%',
+          left: '10%',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(102, 203, 253, 0.45) 0%, rgba(102, 203, 253, 0) 70%)',
+          filter: 'blur(120px)',
+          mixBlendMode: 'multiply',
+          willChange: 'transform',
+        }}
+      />
 
-      {/* Abstract Plus */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '25%', left: '75%', width: '120px', opacity: 0.05 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round">
-        <path d="M50 20 L50 80 M20 50 L80 50" />
-      </svg>
+      {/* Orb 2: Reelo Soft Pink */}
+      <div 
+        className="glow-orb"
+        style={{
+          position: 'absolute',
+          bottom: '5%',
+          right: '5%',
+          width: '700px',
+          height: '700px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(249, 169, 240, 0.45) 0%, rgba(249, 169, 240, 0) 70%)',
+          filter: 'blur(140px)',
+          mixBlendMode: 'multiply',
+          willChange: 'transform',
+        }}
+      />
 
-      {/* Wireframe Triangle / Pyramid */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '70%', left: '20%', width: '180px', opacity: 0.04 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="1.5" strokeLinejoin="round">
-        <polygon points="50,15 90,85 10,85" />
-        <path d="M50 15 L50 85 M10 85 L50 65 L90 85" />
-      </svg>
-      
-      {/* Video Play Icon Floating */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '45%', right: '40%', width: '100px', opacity: 0.06 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="2" strokeLinejoin="round">
-        <polygon points="35,25 75,50 35,75" />
-      </svg>
+      {/* Orb 3: Reelo Lime Green */}
+      <div 
+        className="glow-orb"
+        style={{
+          position: 'absolute',
+          top: '25%',
+          right: '20%',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(220, 255, 219, 0.5) 0%, rgba(220, 255, 219, 0) 70%)',
+          filter: 'blur(100px)',
+          mixBlendMode: 'multiply',
+          willChange: 'transform',
+        }}
+      />
 
-      {/* Square Frame */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '10%', right: '25%', width: '150px', opacity: 0.04 }} viewBox="0 0 100 100" fill="none" stroke="#000" strokeWidth="1.5">
-        <rect x="20" y="20" width="60" height="60" />
-        <rect x="30" y="30" width="60" height="60" />
-        <path d="M20 20 L30 30 M80 20 L90 30 M80 80 L90 90 M20 80 L30 90" />
-      </svg>
-      
-      {/* Floating Dots Pattern */}
-      <svg className="gsap-shape" style={{ position: 'absolute', top: '40%', left: '10%', width: '120px', opacity: 0.05 }} viewBox="0 0 100 100" fill="#000">
-        <circle cx="10" cy="10" r="2.5" /><circle cx="35" cy="10" r="2.5" /><circle cx="60" cy="10" r="2.5" />
-        <circle cx="10" cy="35" r="2.5" /><circle cx="35" cy="35" r="2.5" /><circle cx="60" cy="35" r="2.5" />
-        <circle cx="10" cy="60" r="2.5" /><circle cx="35" cy="60" r="2.5" /><circle cx="60" cy="60" r="2.5" />
-      </svg>
-
-      {/* Optional Top Gradient overlay to blend the grid fading in */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '40%',
-        background: 'linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 100%)',
-        pointerEvents: 'none'
-      }} />
+      {/* Orb 4: Soft Warm Coral Accent */}
+      <div 
+        className="glow-orb"
+        style={{
+          position: 'absolute',
+          bottom: '-10%',
+          left: '5%',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(232, 85, 61, 0.22) 0%, rgba(232, 85, 61, 0) 70%)',
+          filter: 'blur(120px)',
+          mixBlendMode: 'multiply',
+          willChange: 'transform',
+        }}
+      />
     </div>
   );
 }

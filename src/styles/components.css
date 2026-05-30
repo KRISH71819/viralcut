@@ -8,16 +8,18 @@
    ========================================== */
 .navbar {
   position: fixed;
-  top: 0;
+  top: 16px;
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  height: var(--nav-h);
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--sp-5);
+  padding: 0 var(--sp-4);
+  background: transparent !important;
   transition: all var(--dur-normal) var(--ease-out);
+  pointer-events: none; /* Let scroll clicks pass through outside the pill */
 }
 
 .navbar-inner {
@@ -25,20 +27,24 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--max-w);
-  height: 48px;
-  padding: 0 var(--sp-6);
+  max-width: 650px; /* Reelo compact capsule size */
+  height: 50px;
+  padding: 0 var(--sp-5);
   border-radius: var(--r-full);
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
   transition: all var(--dur-normal) var(--ease-out);
+  pointer-events: auto; /* Enable clicks inside the menu pill */
 }
 
 .navbar.scrolled .navbar-inner {
-  background: rgba(255,255,255,0.92);
-  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.08);
+  transform: translateY(2px);
 }
 
 .nav-logo {
@@ -234,21 +240,22 @@
 }
 
 /* ==========================================
-   BADGE / TAG
+   BADGE / TAG (Reelo Capsule Pill)
    ========================================== */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
   padding: 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: var(--weight-regular);
-  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--text-secondary);
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--r-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .badge-dot::before {
@@ -258,6 +265,7 @@
   border-radius: 50%;
   background: var(--accent-green-dark);
   flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(96, 191, 8, 0.4);
 }
 
 .badge-dark {
@@ -845,8 +853,10 @@
   display: flex;
   align-items: center;
   gap: var(--sp-8);
+  width: max-content;
   white-space: nowrap;
   will-change: transform;
+  animation: marquee-horizontal 20s linear infinite;
 }
 
 .footer-marquee-text {
@@ -893,34 +903,18 @@
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
-}
-
-.logo-marquee::before,
-.logo-marquee::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.logo-marquee::before {
-  left: 0;
-  background: linear-gradient(to right, var(--bg), transparent);
-}
-
-.logo-marquee::after {
-  right: 0;
-  background: linear-gradient(to left, var(--bg), transparent);
+  /* Premium linear gradient mask fading out at left and right edges */
+  mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
 }
 
 .logo-marquee-track {
   display: flex;
   align-items: center;
   gap: var(--sp-16);
+  width: max-content;
   will-change: transform;
+  animation: marquee-horizontal 35s linear infinite;
 }
 
 .logo-marquee-track img {

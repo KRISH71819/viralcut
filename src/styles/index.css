@@ -367,3 +367,11 @@ ul, ol { list-style: none; }
 @media (min-width: 769px) {
   .show-mobile-only { display: none !important; }
 }
+
+/* ==========================================
+   GLOBAL MARQUEE KEYFRAMES
+   ========================================== */
+@keyframes marquee-horizontal {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
