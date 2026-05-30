@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — ViralCut AI</title>
+  <meta name="description" content="Upload videos, manage clips, and track your content performance with ViralCut AI Dashboard." />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/dashboard.css" />
+</head>
+<body>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#E8553D"/>
+        <path d="M8 22L14 10L17 16L20 12L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="10" r="2" fill="#F5A623"/>
+      </svg>
+      Viral<span>Cut</span>
+    </a>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-tab="overview">
+        <span class="sidebar-link-icon">📊</span>
+        Overview
+      </a>
+      <a href="#" class="sidebar-link" data-tab="clips">
+        <span class="sidebar-link-icon">🎬</span>
+        My Clips
+      </a>
+      <a href="#" class="sidebar-link" data-tab="upload">
+        <span class="sidebar-link-icon">📤</span>
+        Upload
+      </a>
+      <a href="#" class="sidebar-link" data-tab="brand">
+        <span class="sidebar-link-icon">🎨</span>
+        Brand Kit
+      </a>
+      <a href="#" class="sidebar-link" data-tab="publish">
+        <span class="sidebar-link-icon">📱</span>
+        Publish Queue
+      </a>
+      <a href="#" class="sidebar-link" data-tab="settings">
+        <span class="sidebar-link-icon">⚙️</span>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:var(--sp-3);">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;">K</div>
+        <div>
+          <div style="font-size:var(--text-sm);font-weight:var(--weight-semi);color:var(--ink);">Krish</div>
+          <div style="font-size:var(--text-xs);color:var(--muted);">Starter Plan</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MOBILE HEADER ===================== -->
+  <div class="dash-mobile-header show-mobile">
+    <button class="nav-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/" class="nav-logo">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#E8553D"/>
+        <path d="M8 22L14 10L17 16L20 12L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="10" r="2" fill="#F5A623"/>
+      </svg>
+      Viral<span>Cut</span>
+    </a>
+  </div>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="dash-main">
+    <!-- Header -->
+    <div class="dash-header">
+      <div>
+        <h1 class="heading-2" style="margin-bottom:var(--sp-1);">Welcome back, Krish 👋</h1>
+        <p class="text-muted" style="font-size:var(--text-sm);">Here's what's happening with your clips today.</p>
+      </div>
+      <button class="btn btn-cta" id="upload-trigger">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        New Video
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="dash-stats">
+      <div class="stat-card">
+        <div class="stat-label">Videos Processed</div>
+        <div class="stat-value">24</div>
+        <div class="stat-change">↑ 6 this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Clips Generated</div>
+        <div class="stat-value">147</div>
+        <div class="stat-change">↑ 32 this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg. Hook Score</div>
+        <div class="stat-value" style="color:var(--coral);">87<span style="font-size:var(--text-lg);color:var(--muted);">/100</span></div>
+        <div class="stat-change">↑ 4 pts from last week</div>
+      </div>
+    </div>
+
+    <!-- Upload Zone -->
+    <div class="upload-zone" id="upload-zone">
+      <div class="upload-zone-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+        </svg>
+      </div>
+      <p class="upload-zone-text">Drop your video here or click to upload</p>
+      <p class="upload-zone-hint">MP4 or MOV · Up to 2GB · Videos up to 3 hours</p>
+    </div>
+
+    <!-- Recent Clips -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-6);">
+      <h2 class="heading-3">Recent Clips</h2>
+      <button class="btn btn-ghost btn-sm">View All →</button>
+    </div>
+
+    <div class="clips-grid" id="clips-grid">
+      <!-- Clip 1 -->
+      <div class="clip-card" data-clip-id="1">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#1A1A2E,#2D1B4E);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 92</div>
+          <div class="clip-duration">0:42</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"Why 90% of traders lose money"</div>
+          <div class="clip-meta">
+            <span>2 hours ago</span>
+            <span style="color:var(--coral);font-weight:600;">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clip 2 -->
+      <div class="clip-card" data-clip-id="2">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#1E3A5F,#0F2027);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 88</div>
+          <div class="clip-duration">0:58</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"The compound interest trick nobody teaches"</div>
+          <div class="clip-meta">
+            <span>5 hours ago</span>
+            <span style="color:var(--coral);font-weight:600;">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clip 3 -->
+      <div class="clip-card" data-clip-id="3">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#2D1B4E,#4A1942);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 85</div>
+          <div class="clip-duration">0:35</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"This one habit changed my business"</div>
+          <div class="clip-meta">
+            <span>1 day ago</span>
+            <span style="color:var(--coral);font-weight:600;">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clip 4 -->
+      <div class="clip-card" data-clip-id="4">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#0D3B3B,#1A4747);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 79</div>
+          <div class="clip-duration">1:12</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"How I built a $10K/month side hustle"</div>
+          <div class="clip-meta">
+            <span>2 days ago</span>
+            <span style="color:var(--amber);font-weight:600;">Processing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clip 5 -->
+      <div class="clip-card" data-clip-id="5">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#3B1C32,#2A1B3D);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 91</div>
+          <div class="clip-duration">0:48</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"The psychology of viral content"</div>
+          <div class="clip-meta">
+            <span>3 days ago</span>
+            <span style="color:var(--coral);font-weight:600;">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clip 6 -->
+      <div class="clip-card" data-clip-id="6">
+        <div class="clip-thumb">
+          <div class="clip-thumb-bg" style="background:linear-gradient(135deg,#1B2838,#2C3E50);">
+            <div class="clip-play">▶</div>
+          </div>
+          <div class="clip-score">🔥 76</div>
+          <div class="clip-duration">0:29</div>
+        </div>
+        <div class="clip-info">
+          <div class="clip-title">"Stop saving money, start investing"</div>
+          <div class="clip-meta">
+            <span>4 days ago</span>
+            <span style="color:var(--coral);font-weight:600;">Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== CLIP DETAIL MODAL ===================== -->
+  <div class="modal-overlay" id="clip-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="heading-4" id="modal-title">Clip Details</h3>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Mock Video Player -->
+        <div style="background:#0F0F1A;border-radius:var(--r-xl);aspect-ratio:9/16;max-height:400px;margin:0 auto var(--sp-6);display:flex;align-items:center;justify-content:center;overflow:hidden;max-width:225px;">
+          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-xl);">
+            <source src="https://cdn.prod.website-files.com/6388604483b03a9ecb34d695%2F684c290acf00706f1ffb2fe4_20250613-163457-transcode.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Hook Reasoning -->
+        <div style="background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-5);">
+          <div style="font-family:var(--font-head);font-size:var(--text-sm);font-weight:var(--weight-semi);color:var(--ink);margin-bottom:var(--sp-3);">🧠 Why This Hook Works</div>
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:var(--leading-relaxed);">
+            This clip opens with a bold, contrarian statement that creates immediate tension: "90% of traders lose money." The emotional intensity peaks at 0:12 when the speaker reveals the psychological trap, making viewers want to hear the resolution. High shareability on finance-focused audiences.
+          </p>
+        </div>
+
+        <!-- Metadata Grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-6);">
+          <div style="background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center;">
+            <div style="font-size:var(--text-xs);color:var(--muted);margin-bottom:var(--sp-1);">Hook Score</div>
+            <div style="font-family:var(--font-head);font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--coral);">92</div>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center;">
+            <div style="font-size:var(--text-xs);color:var(--muted);margin-bottom:var(--sp-1);">Duration</div>
+            <div style="font-family:var(--font-head);font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--ink);">0:42</div>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center;">
+            <div style="font-size:var(--text-xs);color:var(--muted);margin-bottom:var(--sp-1);">B-Roll Clips</div>
+            <div style="font-family:var(--font-head);font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--amber);">3</div>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center;">
+            <div style="font-size:var(--text-xs);color:var(--muted);margin-bottom:var(--sp-1);">Caption Style</div>
+            <div style="font-family:var(--font-head);font-size:var(--text-sm);font-weight:var(--weight-semi);color:var(--ink);">Hormozi Bold</div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div style="display:flex;gap:var(--sp-3);">
+          <button class="btn btn-cta" style="flex:1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download MP4
+          </button>
+          <button class="btn btn-outline" style="flex:1;">
+            Edit Clip
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/scripts/dashboard.js"></script>
+</body>
+</html>

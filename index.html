@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralCut AI — Turn Long Videos into Viral Shorts Instantly</title>
+  <meta name="description" content="The world's first semantically-aware short-form video editor. AI finds hooks, injects B-roll, adds captions — publish-ready Reels, Shorts & TikToks in minutes." />
+  <meta property="og:title" content="ViralCut AI — Turn Long Videos into Viral Shorts Instantly" />
+  <meta property="og:description" content="AI-powered video editing that understands your content. Find hooks, inject B-roll, add animated captions — all automatically." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/landing.css" />
+</head>
+<body>
+
+  <!-- Framer Motion React Background Container -->
+  <div id="react-background-root"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="nav-logo" aria-label="ViralCut Home">
+        <svg class="nav-logo-icon" width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#000"/>
+          <path d="M8 22L12 10L16 18L20 12L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="10" r="2" fill="#66CBFD"/>
+        </svg>
+        ViralCut
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="dashboard.html" class="btn btn-ghost hide-mobile">Log In</a>
+        <a href="dashboard.html" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay -->
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#how-it-works" class="nav-link">How It Works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="dashboard.html" class="btn btn-primary btn-lg" style="margin-top:16px;">Get Started Free</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge-wrap" data-animate="fade-up">
+        <div class="badge badge-dot">AI-Powered Video Editor</div>
+      </div>
+
+      <h1 class="hero-title" data-animate="hero-title">
+        Content That Works<br/>Every Single Time
+      </h1>
+
+      <p class="hero-desc" data-animate="fade-up">
+        ViralCut is a short-form content system built for agencies and creators who want consistent growth.
+      </p>
+
+      <div class="hero-actions" data-animate="fade-up">
+        <a href="dashboard.html" class="btn btn-primary btn-lg">
+          Get in touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Hero Phones — 3 tilted iPhones -->
+      <div class="hero-phones" data-animate="hero-visual">
+        <div class="hero-phones-group">
+          <div class="hero-phone hero-phone-left">
+            <div class="hero-phone-frame">
+              <div class="hero-phone-notch"></div>
+              <img src="/images/phone-1.png" alt="AI-generated short-form video content" class="hero-phone-img" loading="eager" />
+            </div>
+          </div>
+
+          <div class="hero-phone hero-phone-center">
+            <div class="hero-phone-frame">
+              <div class="hero-phone-notch"></div>
+              <img src="/images/phone-2.png" alt="Viral video clip created by ViralCut AI" class="hero-phone-img" loading="eager" />
+            </div>
+          </div>
+
+          <div class="hero-phone hero-phone-right">
+            <div class="hero-phone-frame">
+              <div class="hero-phone-notch"></div>
+              <img src="/images/phone-3.png" alt="Short-form content for social media" class="hero-phone-img" loading="eager" />
+            </div>
+          </div>
+
+          <!-- Floating stat badges -->
+          <div class="hero-stat-badge hero-stat-left">
+            <span class="stat-badge-icon">❤️</span>
+            <span class="stat-badge-value">20K+ Likes</span>
+          </div>
+
+          <div class="hero-stat-badge hero-stat-right">
+            <span class="stat-badge-icon">💙</span>
+            <span class="stat-badge-value">2.2M Reach</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Metrics Marquee -->
+    <div class="hero-metrics-marquee">
+      <div class="hero-metrics-track" id="hero-metrics-track">
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5x Engagement Increase</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 120+ Videos Produced</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 85% Avg Retention</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> +20K Followers Gained</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> +2.4M Views Generated</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5x Engagement Increase</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 120+ Videos Produced</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 85% Avg Retention</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> +20K Followers Gained</div>
+        <div class="metric-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> +2.4M Views Generated</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOGO MARQUEE ===================== -->
+  <section class="logo-marquee section-logos" id="logos">
+    <div class="logo-marquee-track" id="logo-track">
+      <!-- High-fidelity inline SVGs for client logos, preventing broken links -->
+      <svg class="logo-marquee-svg" viewBox="0 0 80 32" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M72.9 14.2c0-3.7-2-5.4-5.3-5.4-3.5 0-5.7 2.1-5.7 5.7 0 4.1 2.9 5.2 6 5.2 3.1 0 5-1.1 5-5.5zm-8.4 0c0-1.7 1-2.4 2.8-2.4 1.7 0 2.8.7 2.8 2.4 0 1.9-1.1 2.4-2.8 2.4-1.8 0-2.8-.5-2.8-2.4zM47.7 20V12h3.5v-3.1h-3.5v-4L44.2 6v2.9H42V12h2.2v8h3.5zM38.8 8.8c-2 0-3.3 1-3.9 2.1V9h-3.3v14.1l3.5-.7v-5.1c.6.9 1.9 1.7 3.7 1.7 3.3 0 5.6-2.4 5.6-5.8 0-3.4-2.3-5.7-5.6-5.7zm-.6 8.3c-1.8 0-2.9-1.1-2.9-2.9 0-1.8 1.1-2.9 2.9-2.9s2.9 1.1 2.9 2.9c0 1.8-1.1 2.9-2.9 2.9zM25 8.8c-1.5 0-2.8.8-3.4 1.9V9h-3.3v11h3.5v-6.3c0-1.8 1.1-2.5 2.6-2.5.4 0 .7.1.9.2V8.9c-.3-.1-.7-.1-1.3-.1zm-10.4.3c-1.1 0-1.9.8-1.9 1.9v8.9h3.5V9.1h-1.6zm0-5.1c-1.1 0-1.9.8-1.9 1.9 0 1.1.8 1.9 1.9 1.9s1.9-.8 1.9-1.9c0-1.1-.8-1.9-1.9-1.9zM7.3 14.1c0-1.2.9-1.8 2.5-1.8 1.4 0 2.5.4 2.5 1.2 0 1.5-2.1 1.2-2.8 1.4-.7.2-1 .5-1 .9 0 .7.8 1.1 1.9 1.1 1.7 0 3-.7 3-1.8v-.2h1.8c0 2-1.7 3-3.8 3-2.3 0-3.9-1.1-3.9-3 0-2.2 3.1-1.8 3.8-2 .7-.2.9-.4.9-.9 0-.6-.7-.9-1.6-.9-1.4 0-2.4.5-2.4 1.4h-1.7z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 2h14v7H12L5 2zm0 7h7l7 7H5V9zm7 7v6l7-7H12v1z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.5c-2.3 1.7-6.7 4.9-10.2 7.7C8.1 16.3 5.4 18.5 3 20.5c-.3.2-.6.4-.9.2-.2-.2-.2-.5 0-.7 2.3-2.9 6.2-7.8 9.5-11.4 1.9-2.1 3.7-4 5.3-5.3 1.4-1.1 2.8-1.8 3.9-1.2.6.4.7 1.5.2 3.2z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5.522 0 10 4.477 10 10s-4.478 10-10 10S2 17.523 2 12 6.478 2 12 2m0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 6h2v4h-2V6zm0 6h2v6h-2v-6z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M24 22.525H0L12 1.718L24 22.525Z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12C19.5 16.1421 16.1421 19.5 12 19.5Z"/></svg>
+      <!-- Duplicate set to ensure seamless infinite looping marquee -->
+      <svg class="logo-marquee-svg" viewBox="0 0 80 32" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M72.9 14.2c0-3.7-2-5.4-5.3-5.4-3.5 0-5.7 2.1-5.7 5.7 0 4.1 2.9 5.2 6 5.2 3.1 0 5-1.1 5-5.5zm-8.4 0c0-1.7 1-2.4 2.8-2.4 1.7 0 2.8.7 2.8 2.4 0 1.9-1.1 2.4-2.8 2.4-1.8 0-2.8-.5-2.8-2.4zM47.7 20V12h3.5v-3.1h-3.5v-4L44.2 6v2.9H42V12h2.2v8h3.5zM38.8 8.8c-2 0-3.3 1-3.9 2.1V9h-3.3v14.1l3.5-.7v-5.1c.6.9 1.9 1.7 3.7 1.7 3.3 0 5.6-2.4 5.6-5.8 0-3.4-2.3-5.7-5.6-5.7zm-.6 8.3c-1.8 0-2.9-1.1-2.9-2.9 0-1.8 1.1-2.9 2.9-2.9s2.9 1.1 2.9 2.9c0 1.8-1.1 2.9-2.9 2.9zM25 8.8c-1.5 0-2.8.8-3.4 1.9V9h-3.3v11h3.5v-6.3c0-1.8 1.1-2.5 2.6-2.5.4 0 .7.1.9.2V8.9c-.3-.1-.7-.1-1.3-.1zm-10.4.3c-1.1 0-1.9.8-1.9 1.9v8.9h3.5V9.1h-1.6zm0-5.1c-1.1 0-1.9.8-1.9 1.9 0 1.1.8 1.9 1.9 1.9s1.9-.8 1.9-1.9c0-1.1-.8-1.9-1.9-1.9zM7.3 14.1c0-1.2.9-1.8 2.5-1.8 1.4 0 2.5.4 2.5 1.2 0 1.5-2.1 1.2-2.8 1.4-.7.2-1 .5-1 .9 0 .7.8 1.1 1.9 1.1 1.7 0 3-.7 3-1.8v-.2h1.8c0 2-1.7 3-3.8 3-2.3 0-3.9-1.1-3.9-3 0-2.2 3.1-1.8 3.8-2 .7-.2.9-.4.9-.9 0-.6-.7-.9-1.6-.9-1.4 0-2.4.5-2.4 1.4h-1.7z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 2h14v7H12L5 2zm0 7h7l7 7H5V9zm7 7v6l7-7H12v1z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.5c-2.3 1.7-6.7 4.9-10.2 7.7C8.1 16.3 5.4 18.5 3 20.5c-.3.2-.6.4-.9.2-.2-.2-.2-.5 0-.7 2.3-2.9 6.2-7.8 9.5-11.4 1.9-2.1 3.7-4 5.3-5.3 1.4-1.1 2.8-1.8 3.9-1.2.6.4.7 1.5.2 3.2z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5.522 0 10 4.477 10 10s-4.478 10-10 10S2 17.523 2 12 6.478 2 12 2m0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 6h2v4h-2V6zm0 6h2v6h-2v-6z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M24 22.525H0L12 1.718L24 22.525Z"/></svg>
+      <svg class="logo-marquee-svg" viewBox="0 0 24 24" fill="currentColor" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12C19.5 16.1421 16.1421 19.5 12 19.5Z"/></svg>
+    </div>
+  </section>
+
+  <!-- ===================== WHY VIRALCUT (Comparison) ===================== -->
+  <section class="section section-compare" id="why">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Why ViralCut</span>
+        <h2 class="section-title">There is a better way<br/>to do content</h2>
+      </div>
+
+      <div class="compare-grid" data-animate="stagger-up">
+        <!-- Column 1: Marketplaces -->
+        <div class="compare-col">
+          <div class="compare-col-head">Marketplaces</div>
+          <ul class="compare-list compare-list-bad">
+            <li>No fixed editor</li>
+            <li>No clear strategy</li>
+            <li>Not long-term</li>
+            <li>Inconsistent quality</li>
+            <li>You manage everything</li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Agencies -->
+        <div class="compare-col">
+          <div class="compare-col-head">Agencies</div>
+          <ul class="compare-list compare-list-bad">
+            <li>Expensive retainers</li>
+            <li>Slow turnaround</li>
+            <li>Generic strategies</li>
+            <li>Limited flexibility</li>
+            <li>Complicated process</li>
+          </ul>
+        </div>
+
+        <!-- Column 3: ViralCut (Highlighted) -->
+        <div class="compare-col compare-col-highlight">
+          <div class="compare-col-head">
+            <svg width="16" height="16" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#000"/><path d="M8 22L12 10L16 18L20 12L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            ViralCut
+          </div>
+          <ul class="compare-list compare-list-good">
+            <li>Built for performance</li>
+            <li>Dedicated system</li>
+            <li>Fast, consistent output</li>
+            <li>Scales with your needs</li>
+            <li>Results-focused</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS (Bento Grid) ===================== -->
+  <section class="section section-bento" id="how-it-works">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Process</span>
+        <h2 class="section-title">How content scales<br/>with ViralCut</h2>
+      </div>
+
+      <div class="bento-grid" data-animate="stagger-up">
+        <!-- Card 1: Strategy Call -->
+        <div class="bento-card">
+          <div class="bento-card-badge">⚡ Takes ~15 minutes</div>
+          <div class="bento-card-visual bento-visual-chat">
+            <!-- Chat / Video Call UI -->
+            <div class="bento-chat-layout">
+              <div class="bento-video-thumb">
+                <img src="/images/phone-1.png" alt="Video call" />
+                <div class="bento-video-badge">
+                  <span class="bento-dot bento-dot-green"></span> Sarah K.
+                </div>
+              </div>
+              <div class="bento-chat-msgs">
+                <div class="bento-chat-row bento-chat-right">
+                  <div class="bento-chat-bubble">Hey, I am interested</div>
+                  <div class="bento-chat-avatar">👤</div>
+                </div>
+                <div class="bento-chat-row bento-chat-right">
+                  <div class="bento-chat-bubble">Let's meet?</div>
+                </div>
+                <div class="bento-chat-row bento-chat-left">
+                  <div class="bento-chat-bubble bento-chat-bubble-light">Let's hop on a call!</div>
+                </div>
+                <div class="bento-chat-row bento-chat-left">
+                  <div class="bento-chat-bubble bento-chat-bubble-light">at 7:30 PM</div>
+                </div>
+              </div>
+            </div>
+            <div class="bento-thumbs-row">
+              <img src="/images/portfolio-grid.jpg" alt="" class="bento-thumb" />
+              <img src="/images/portfolio-vlog.jpg" alt="" class="bento-thumb" />
+            </div>
+          </div>
+          <h3 class="bento-card-title">Strategy Call</h3>
+          <p class="bento-card-desc">We understand your brand, goals, and content direction to get the best output.</p>
+        </div>
+
+        <!-- Card 2: Send Content -->
+        <div class="bento-card">
+          <div class="bento-card-badge">⚡ No editing. No setup needed.</div>
+          <div class="bento-card-visual bento-visual-collage">
+            <!-- Photo collage floating effect -->
+            <div class="bento-collage">
+              <div class="bento-collage-item bento-collage-1">
+                <img src="/images/portfolio-editing.jpg" alt="" />
+              </div>
+              <div class="bento-collage-item bento-collage-2" style="background:#66CBFD;">
+                <img src="/images/portfolio-podcast.jpg" alt="" />
+              </div>
+              <div class="bento-collage-item bento-collage-3">
+                <img src="/images/portfolio-stage.jpg" alt="" />
+              </div>
+              <div class="bento-collage-item bento-collage-4">
+                <img src="/images/portfolio-vlog.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <h3 class="bento-card-title">Send Content</h3>
+          <p class="bento-card-desc">Record anywhere — phone, podcast, or camera. Just send it over to our system.</p>
+        </div>
+
+        <!-- Card 3: Make Content Perform -->
+        <div class="bento-card">
+          <div class="bento-card-badge">⚡ Performance Based</div>
+          <div class="bento-card-visual bento-visual-timeline">
+            <!-- Video editing timeline UI -->
+            <div class="bento-timeline">
+              <div class="bento-timeline-header">
+                <div class="bento-timeline-dot"></div>
+                <div class="bento-timeline-bar">
+                  <div class="bento-timeline-label">Rectangle</div>
+                  <svg class="bento-timeline-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </div>
+              </div>
+              <div class="bento-timeline-row">
+                <span class="bento-lut-tag">LUT V02</span>
+                <div class="bento-lut-bar"></div>
+              </div>
+              <div class="bento-timeline-clips">
+                <div class="bento-clip"><img src="/images/phone-3.png" alt="" /></div>
+                <span class="bento-clip-plus">+</span>
+                <div class="bento-clip"><img src="/images/phone-1.png" alt="" /></div>
+              </div>
+              <div class="bento-waveform">
+                <div class="bento-waveform-bars"></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="bento-card-title">Make Content Perform</h3>
+          <p class="bento-card-desc">We edit, structure, and optimize every video for getting maximum retention.</p>
+        </div>
+
+        <!-- Card 4: Scale Your Content -->
+        <div class="bento-card">
+          <div class="bento-card-badge">⚡ Organic Scaling</div>
+          <div class="bento-card-visual bento-visual-metrics">
+            <!-- Performance metric pills -->
+            <div class="bento-metrics-grid">
+              <div class="bento-metric-pill">+32% Retention</div>
+              <div class="bento-metric-pill bento-metric-check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3.2x Engagement</div>
+              <div class="bento-metric-pill bento-metric-fade">Pattern Detected</div>
+              <div class="bento-metric-pill bento-metric-check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> +120K Views</div>
+              <div class="bento-metric-pill bento-metric-check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 85% Avg</div>
+              <div class="bento-metric-pill bento-metric-fade">Top 10% Performing</div>
+              <div class="bento-metric-pill bento-metric-check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hook Win Rate</div>
+            </div>
+          </div>
+          <h3 class="bento-card-title">Scale Your Content</h3>
+          <p class="bento-card-desc">We track performance and continuously improve your content to boost your growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="section section-features" id="features">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Services</span>
+        <h2 class="section-title">What you will gain<br/>from our system</h2>
+        <p class="section-desc">We craft the first 3 seconds that grab attention and keep viewers watching for maximum amount of time.</p>
+      </div>
+
+      <div class="features-grid" data-animate="stagger-up">
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10l3 3 4-4 3 3"/></svg>
+          </div>
+          <h3 class="feature-card-title">Core System</h3>
+          <p class="feature-card-desc">We craft the first 3 seconds that grab attention of your audience.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <h3 class="feature-card-title">Short-Form Content</h3>
+          <p class="feature-card-desc">Scroll-stopping edits designed for maximum retention.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Content Strategy</h3>
+          <p class="feature-card-desc">Structured planning built to drive consistent growth.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <h3 class="feature-card-title">Repurposing Engine</h3>
+          <p class="feature-card-desc">Turn one idea into multiple high-performing videos.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3 class="feature-card-title">Optimization</h3>
+          <p class="feature-card-desc">Every video is refined based on real engagement data.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature-card-title">Fast Delivery</h3>
+          <p class="feature-card-desc">Quick turnaround with consistent quality every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section class="section section-portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Featured Project</span>
+        <h2 class="section-title">Contents that work<br/>in the real world</h2>
+      </div>
+
+      <div class="portfolio-grid" data-animate="stagger-up">
+        <div class="portfolio-item">
+          <img src="/images/portfolio-grid.jpg" alt="Content project - Ayaan" loading="lazy" />
+          <div class="portfolio-overlay"><span>Ayaan</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/images/portfolio-editing.jpg" alt="Content project - Jessie" loading="lazy" />
+          <div class="portfolio-overlay"><span>Jessie</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/images/portfolio-podcast.jpg" alt="Content project - Sophie" loading="lazy" />
+          <div class="portfolio-overlay"><span>Sophie</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/images/portfolio-vlog.jpg" alt="Content project - Suvam" loading="lazy" />
+          <div class="portfolio-overlay"><span>Suvam</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/images/portfolio-stage.jpg" alt="Content project - Raqu" loading="lazy" />
+          <div class="portfolio-overlay"><span>Raqu</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/images/phone-2.png" alt="Content project - Ajoy" loading="lazy" />
+          <div class="portfolio-overlay"><span>Ajoy</span></div>
+        </div>
+      </div>
+
+      <div class="portfolio-cta" data-animate="fade-up">
+        <a href="#" class="btn btn-outline">Load more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section class="section section-pricing" id="pricing">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Pricing</span>
+        <h2 class="section-title">Simple pricing<br/>and built to scale</h2>
+      </div>
+
+      <div class="pricing-grid" data-animate="stagger-up">
+        <!-- Starter -->
+        <div class="pricing-card">
+          <div class="pricing-card-head">
+            <h3 class="pricing-name">Starter</h3>
+            <p class="pricing-tagline">For creators getting started with consistent short-form content.</p>
+          </div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Basic hook templates</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Standard editing</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Weekly delivery</li>
+          </ul>
+          <a href="dashboard.html" class="btn btn-outline btn-block">Get Started</a>
+        </div>
+
+        <!-- Growth (Popular) -->
+        <div class="pricing-card pricing-card-popular">
+          <div class="pricing-popular-badge">Most Popular</div>
+          <div class="pricing-card-head">
+            <h3 class="pricing-name">Growth</h3>
+            <p class="pricing-tagline">For brands and creators serious about scaling content.</p>
+          </div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Advanced hook analysis</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-platform optimization</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Repurposing included</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Performance tracking</li>
+          </ul>
+          <a href="dashboard.html" class="btn btn-primary btn-block">Start Growing</a>
+          <p class="pricing-note">Cancel anytime.</p>
+        </div>
+
+        <!-- Mega -->
+        <div class="pricing-card">
+          <div class="pricing-card-head">
+            <h3 class="pricing-name">Mega</h3>
+            <p class="pricing-tagline">For teams ready to scale content at maximum volume.</p>
+          </div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Full content system</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Dedicated strategy</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Priority turnaround</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Custom workflows</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline btn-block">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section section-testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Testimonial</span>
+        <h2 class="section-title">Proof that our method<br/>works perfectly</h2>
+      </div>
+    </div>
+
+    <div class="testimonial-track-wrap">
+      <div class="testimonial-track" id="testimonial-track">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">One idea turned into multiple high-performing videos. We scaled content without increasing workload.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">O</div>
+            <div><div class="testimonial-name">Orin</div><div class="testimonial-role">Content Creator</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">We improved watch time from around 40% to over 80%. That single change doubled our overall reach.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div><div class="testimonial-name">Jassie M.</div><div class="testimonial-role">Brand Manager</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">We were stuck under 5K views for months. After applying the system, videos crossed 50K within days.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div><div class="testimonial-name">Ajoy S.</div><div class="testimonial-role">Entrepreneur</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">The AI hook finder alone was worth it. Our retention jumped from 30% to 72% in the first week.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">K</div>
+            <div><div class="testimonial-name">Kafsir S.</div><div class="testimonial-role">YouTuber</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">Finally a system that understands content strategy, not just editing. Our growth has been exponential.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div><div class="testimonial-name">Rasei M.</div><div class="testimonial-role">Agency Owner</div></div>
+          </div>
+        </div>
+        <!-- Duplicates for seamless scroll -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">One idea turned into multiple high-performing videos. We scaled content without increasing workload.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">O</div>
+            <div><div class="testimonial-name">Orin</div><div class="testimonial-role">Content Creator</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">We improved watch time from around 40% to over 80%. That single change doubled our overall reach.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div><div class="testimonial-name">Jassie M.</div><div class="testimonial-role">Brand Manager</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">We were stuck under 5K views for months. After applying the system, videos crossed 50K within days.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div><div class="testimonial-name">Ajoy S.</div><div class="testimonial-role">Entrepreneur</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">The AI hook finder alone was worth it. Our retention jumped from 30% to 72% in the first week.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">K</div>
+            <div><div class="testimonial-name">Kafsir S.</div><div class="testimonial-role">YouTuber</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">Finally a system that understands content strategy, not just editing. Our growth has been exponential.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div><div class="testimonial-name">Rasei M.</div><div class="testimonial-role">Agency Owner</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section section-faq" id="faq">
+    <div class="container container-sm">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title">Everything you need<br/>to know about us</h2>
+      </div>
+
+      <div class="faq-list" data-animate="fade-up">
+        <div class="faq-item">
+          <button class="faq-q"><span>How does this work?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">You send us your raw content, we handle the strategy, editing, and optimization. Each video is structured for maximum retention and engagement. We deliver ready-to-publish short-form content on a consistent schedule.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What kind of content do you work with?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">We work with podcasts, vlogs, interviews, courses, webinars, and any long-form video content. Our AI-powered system can extract the best moments from any type of video content.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Do I need to script or plan content myself?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. We handle everything from strategy to execution. Just record your content naturally and send it over. Our system identifies the best hooks, structures the narrative, and adds professional editing.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How long does it take to see results?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Most clients see measurable improvement in engagement within the first 2–3 weeks. Significant growth typically happens within the first month as we optimize based on performance data.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How many videos do I get each month?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">This depends on your plan. Starter includes weekly delivery, Growth includes multi-platform optimization with more frequent output, and Mega provides maximum volume with priority turnaround.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BLOG / INSIGHTS ===================== -->
+  <section class="section section-insights" id="blog">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Blog</span>
+        <h2 class="section-title">Insights that drive<br/>proper growth</h2>
+      </div>
+
+      <div class="insights-grid" data-animate="stagger-up">
+        <div class="insight-card">
+          <div class="insight-thumb"><img src="/images/portfolio-editing.jpg" alt="Blog post" loading="lazy" /></div>
+          <div class="insight-meta">Jacob S.</div>
+          <h3 class="insight-title">Why most hooks fail in seconds?</h3>
+        </div>
+        <div class="insight-card">
+          <div class="insight-thumb"><img src="/images/portfolio-podcast.jpg" alt="Blog post" loading="lazy" /></div>
+          <div class="insight-meta">ViralCut Team</div>
+          <h3 class="insight-title">The secret 3-second formula</h3>
+          <p class="insight-desc">A proven structure to grab attention fast and keep viewers watching till the end.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-thumb"><img src="/images/portfolio-stage.jpg" alt="Blog post" loading="lazy" /></div>
+          <div class="insight-meta">Reasi S.</div>
+          <h3 class="insight-title">We tested 50 viral videos</h3>
+          <p class="insight-desc">What actually worked, what failed, and the patterns behind high-performing content.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-thumb"><img src="/images/portfolio-grid.jpg" alt="Blog post" loading="lazy" /></div>
+          <div class="insight-meta">ViralCut Team</div>
+          <h3 class="insight-title">The exact content structure</h3>
+          <p class="insight-desc">The opening of your video determines whether someone stays or leaves.</p>
+        </div>
+      </div>
+
+      <div class="insights-cta" data-animate="fade-up">
+        <a href="#" class="btn btn-outline">View All Blogs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="section section-contact" id="contact">
+    <div class="container container-sm">
+      <div class="section-header" data-animate="fade-up">
+        <span class="badge badge-dot">Contact</span>
+        <h2 class="section-title">Get your content<br/>with proper strategy</h2>
+      </div>
+
+      <form class="contact-form" data-animate="fade-up" onsubmit="event.preventDefault();">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-input" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input form-textarea" rows="4" placeholder="Tell us about your content goals..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== CTA BANNER ===================== -->
+  <section class="section section-cta-banner">
+    <div class="container">
+      <div class="cta-banner" data-animate="fade-up">
+        <h2 class="cta-banner-title">Ready to turn content<br/>into real growth?</h2>
+        <a href="dashboard.html" class="btn btn-white btn-lg">
+          Get in touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <svg class="nav-logo-icon" width="24" height="24" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#000"/>
+              <path d="M8 22L12 10L16 18L20 12L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2" fill="#66CBFD"/>
+            </svg>
+            ViralCut
+          </a>
+          <p class="footer-tagline">AI-powered short-form content system built for consistent growth.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Company</h4>
+          <a href="/" class="footer-link">Home</a>
+          <a href="#portfolio" class="footer-link">Projects</a>
+          <a href="#blog" class="footer-link">Blog</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal</h4>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms & Conditions</a>
+          <a href="#" class="footer-link">Refund Policy</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Newsletter</h4>
+          <p class="footer-text">Get the latest updates in your inbox</p>
+          <form class="footer-newsletter" onsubmit="event.preventDefault();">
+            <input type="email" class="form-input" placeholder="your@email.com" />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Brand Marquee -->
+    <div class="footer-marquee">
+      <div class="footer-marquee-track" id="footer-marquee-track">
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+        <span class="footer-marquee-text">ViralCut</span>
+        <span class="footer-marquee-dot">●</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/scripts/main.js"></script>
+  <script type="module" src="/src/scripts/mountReact.jsx"></script>
+</body>
+</html>

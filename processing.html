@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Processing Your Video — ViralCut AI</title>
+  <meta name="description" content="Watch your video being processed by ViralCut AI's semantic pipeline in real-time." />
+  <link rel="icon" type="image/png" href="/images/viralcut-logo.png" />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/processing.css" />
+</head>
+<body>
+
+  <div class="processing-page">
+    <!-- Header -->
+    <header class="processing-header">
+      <a href="/" class="navbar-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#0D9668"/>
+          <path d="M12 8L24 16L12 24V8Z" fill="white"/>
+          <path d="M8 12L14 16L8 20V12Z" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+        <span class="navbar-logo-text">Viral<span>Cut</span> AI</span>
+      </a>
+      <a href="/dashboard.html" class="btn btn-ghost">← Back to Dashboard</a>
+    </header>
+
+    <!-- Processing Container -->
+    <div class="processing-container">
+      <!-- Title -->
+      <div class="processing-title">
+        <h1 class="heading-2">Processing Your Video</h1>
+        <p class="text-body">Finance_Podcast_Episode_12.mp4 · 45 min · 1.2 GB</p>
+      </div>
+
+      <!-- Overall Progress -->
+      <div class="processing-overall">
+        <div class="progress-ring" id="overall-progress">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="progress-ring-fill" cx="60" cy="60" r="50" id="progress-circle"/>
+          </svg>
+          <div class="progress-ring-text" id="progress-text">0%</div>
+        </div>
+        <div class="processing-eta">
+          <span class="processing-eta-label">Estimated Time Remaining</span>
+          <span class="processing-eta-value" id="eta-value">~2 min 30 sec</span>
+        </div>
+      </div>
+
+      <!-- Pipeline Steps -->
+      <div class="pipeline-steps" id="pipeline-steps">
+        <!-- Step 1: Transcribing -->
+        <div class="pipeline-step active" data-step="1" id="step-1">
+          <div class="pipeline-step-header">
+            <div class="pipeline-step-indicator">
+              <div class="pipeline-step-dot"></div>
+            </div>
+            <div class="pipeline-step-title">
+              <h3>Transcribing Audio</h3>
+              <span class="pipeline-step-status">In progress...</span>
+            </div>
+            <div class="pipeline-step-time">~45s</div>
+          </div>
+          <div class="pipeline-step-body">
+            <div class="pipeline-step-progress">
+              <div class="pipeline-progress-bar" id="step1-bar" style="width: 0%"></div>
+            </div>
+            <div class="pipeline-step-detail">
+              <div class="waveform" id="waveform-1">
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+              </div>
+              <div class="transcript-preview" id="transcript-preview">
+                <span class="transcript-word"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Finding Hooks -->
+        <div class="pipeline-step" data-step="2" id="step-2">
+          <div class="pipeline-step-header">
+            <div class="pipeline-step-indicator">
+              <div class="pipeline-step-dot"></div>
+            </div>
+            <div class="pipeline-step-title">
+              <h3>Finding Viral Hooks</h3>
+              <span class="pipeline-step-status">Waiting...</span>
+            </div>
+            <div class="pipeline-step-time">~30s</div>
+          </div>
+          <div class="pipeline-step-body">
+            <div class="pipeline-step-progress">
+              <div class="pipeline-progress-bar" id="step2-bar" style="width: 0%"></div>
+            </div>
+            <div class="pipeline-step-detail">
+              <div class="hook-cards-preview" id="hook-cards">
+                <!-- Cards appear during animation -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Injecting B-Roll -->
+        <div class="pipeline-step" data-step="3" id="step-3">
+          <div class="pipeline-step-header">
+            <div class="pipeline-step-indicator">
+              <div class="pipeline-step-dot"></div>
+            </div>
+            <div class="pipeline-step-title">
+              <h3>Injecting Semantic B-Roll</h3>
+              <span class="pipeline-step-status">Waiting...</span>
+            </div>
+            <div class="pipeline-step-time">~25s</div>
+          </div>
+          <div class="pipeline-step-body">
+            <div class="pipeline-step-progress">
+              <div class="pipeline-progress-bar" id="step3-bar" style="width: 0%"></div>
+            </div>
+            <div class="pipeline-step-detail">
+              <div class="broll-timeline" id="broll-timeline">
+                <!-- Timeline items appear during animation -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Generating Captions -->
+        <div class="pipeline-step" data-step="4" id="step-4">
+          <div class="pipeline-step-header">
+            <div class="pipeline-step-indicator">
+              <div class="pipeline-step-dot"></div>
+            </div>
+            <div class="pipeline-step-title">
+              <h3>Generating Dynamic Captions</h3>
+              <span class="pipeline-step-status">Waiting...</span>
+            </div>
+            <div class="pipeline-step-time">~20s</div>
+          </div>
+          <div class="pipeline-step-body">
+            <div class="pipeline-step-progress">
+              <div class="pipeline-progress-bar" id="step4-bar" style="width: 0%"></div>
+            </div>
+            <div class="pipeline-step-detail">
+              <div class="caption-gen-preview" id="caption-gen">
+                <!-- Typing animation -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Rendering -->
+        <div class="pipeline-step" data-step="5" id="step-5">
+          <div class="pipeline-step-header">
+            <div class="pipeline-step-indicator">
+              <div class="pipeline-step-dot"></div>
+            </div>
+            <div class="pipeline-step-title">
+              <h3>Rendering Final Clips</h3>
+              <span class="pipeline-step-status">Waiting...</span>
+            </div>
+            <div class="pipeline-step-time">~30s</div>
+          </div>
+          <div class="pipeline-step-body">
+            <div class="pipeline-step-progress">
+              <div class="pipeline-progress-bar" id="step5-bar" style="width: 0%"></div>
+            </div>
+            <div class="pipeline-step-detail">
+              <div class="render-preview" id="render-preview">
+                <span>Compositing 5 clips at 1080p...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completion -->
+      <div class="processing-complete" id="processing-complete" style="display: none;">
+        <div class="complete-icon">🎉</div>
+        <h2 class="heading-2">Your clips are ready!</h2>
+        <p class="text-body">5 clips generated with an average virality score of 82.</p>
+        <a href="/dashboard.html" class="btn btn-cta btn-lg">View Your Clips</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/scripts/processing.js"></script>
+</body>
+</html>

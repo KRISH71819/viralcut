@@ -1,0 +1,41 @@
+/* ============================================
+   DASHBOARD PAGE — v2
+   ============================================ */
+
+/* Mobile Header */
+.dash-mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-4);
+  z-index: calc(var(--z-sticky) + 1);
+}
+
+.dash-mobile-header .nav-toggle {
+  display: flex;
+}
+
+@media (min-width: 1025px) {
+  .dash-mobile-header { display: none !important; }
+}
+
+@media (max-width: 1024px) {
+  .dash-main { padding-top: calc(56px + var(--sp-6)); }
+}
+
+/* Dashboard-specific responsive overrides */
+@media (max-width: 768px) {
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-4);
+  }
+  .dash-header .btn-cta { width: 100%; }
+}

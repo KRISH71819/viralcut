@@ -1,0 +1,369 @@
+/* ============================================
+   VIRALCUT — DESIGN SYSTEM v3
+   Aesthetic: "Premium Neutral Agency" (Reelo-inspired)
+   Palette: Black + White + Soft Pastels
+   Fonts: Clash Grotesk (headings) · Manrope (body) · Fragment Mono (labels)
+   ============================================ */
+
+/* ==========================================
+   GOOGLE FONTS + FONTSHARE
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('https://cdn.fontshare.com/wf/2TYFCBHUANEXS6QGR5EQDUNAFH6LSWM3/5SPTSZGHEACWWLF34DQ4WAA4OGU6PQIF/KN7DX4F6PXB74R6L2K2Y4NH3CB7FC53Q.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================
+   DESIGN TOKENS
+   ========================================== */
+:root {
+  /* — Core Colors — */
+  --black:          #000000;
+  --white:          #FFFFFF;
+  --ink:            #000000;
+  --text:           #333333;
+  --text-secondary: #666666;
+  --muted:          #999999;
+  --faint:          #CCCCCC;
+
+  /* — Surfaces — */
+  --bg:             #F2F2F2;
+  --bg-white:       #FFFFFF;
+  --surface:        #F2F2F2;
+  --surface-dark:   #171717;
+  --border:         #E6E6E6;
+  --border-light:   #EEEEEE;
+
+  /* — Accent Colors (Reelo-style soft pastels) — */
+  --accent-blue:    #66CBFD;
+  --accent-blue-dark: #48BDF7;
+  --accent-pink:    #F9A9F0;
+  --accent-green:   #DCFFDB;
+  --accent-green-dark: #60BF08;
+  --accent-red:     #FF4F4F;
+  --accent-coral:   #E8553D;
+
+  /* — Typography — */
+  --font-head:  'Clash Grotesk', 'Manrope', sans-serif;
+  --font-body:  'Manrope', 'Inter', sans-serif;
+  --font-mono:  'Fragment Mono', monospace;
+
+  --text-xs:    0.75rem;     /* 12px */
+  --text-sm:    0.875rem;    /* 14px */
+  --text-base:  1rem;        /* 16px */
+  --text-lg:    1.125rem;    /* 18px */
+  --text-xl:    1.25rem;     /* 20px */
+  --text-2xl:   1.5rem;      /* 24px */
+  --text-3xl:   1.875rem;    /* 30px */
+  --text-4xl:   2.25rem;     /* 36px */
+  --text-5xl:   3rem;        /* 48px */
+  --text-6xl:   3.75rem;     /* 60px */
+  --text-7xl:   4.5rem;      /* 72px */
+  --text-8xl:   6rem;        /* 96px */
+
+  --leading-tight:    1.1;
+  --leading-snug:     1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+
+  --tracking-tight:   -0.04em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.02em;
+  --tracking-wider:   0.06em;
+  --tracking-widest:  0.12em;
+
+  --weight-light:     300;
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semi:      600;
+  --weight-bold:      700;
+  --weight-extra:     800;
+
+  /* — Spacing — */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+  --sp-32: 128px;
+  --sp-40: 160px;
+
+  /* — Radius — */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   16px;
+  --r-xl:   20px;
+  --r-2xl:  24px;
+  --r-3xl:  32px;
+  --r-full: 9999px;
+
+  /* — Shadows — */
+  --shadow-xs:    0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:    0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:    0 8px 30px rgba(0,0,0,0.08);
+  --shadow-xl:    0 16px 48px rgba(0,0,0,0.1);
+  --shadow-float: 0 24px 64px rgba(0,0,0,0.12);
+  --shadow-card:  0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+
+  /* — Transitions — */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur-fast:    150ms;
+  --dur-normal:  300ms;
+  --dur-slow:    500ms;
+  --dur-slower:  800ms;
+
+  /* — Layout — */
+  --nav-h:       72px;
+  --max-w:       1280px;
+  --max-w-sm:    640px;
+  --max-w-md:    768px;
+  --max-w-lg:    1024px;
+  --section-pad: 120px;
+
+  /* — Z-Index — */
+  --z-base:    1;
+  --z-card:    10;
+  --z-sticky:  100;
+  --z-nav:     500;
+  --z-overlay: 900;
+  --z-modal:   1000;
+}
+
+/* ==========================================
+   RESET & BASE
+   ========================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+}
+
+/* Lenis smooth scroll overrides */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+}
+
+ul, ol { list-style: none; }
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+.heading-display {
+  font-family: var(--font-head);
+  font-size: clamp(var(--text-5xl), 7vw, var(--text-8xl));
+  font-weight: var(--weight-semi);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink);
+}
+
+.heading-1 {
+  font-family: var(--font-head);
+  font-size: clamp(var(--text-3xl), 4.5vw, var(--text-5xl));
+  font-weight: var(--weight-semi);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink);
+}
+
+.heading-2 {
+  font-family: var(--font-head);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  font-weight: var(--weight-semi);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink);
+}
+
+.heading-3 {
+  font-family: var(--font-head);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semi);
+  line-height: var(--leading-snug);
+  color: var(--ink);
+}
+
+.text-body-lg {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-muted { color: var(--muted); }
+.text-center { text-align: center; }
+
+/* ==========================================
+   LAYOUT
+   ========================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+.section {
+  padding: var(--section-pad) 0;
+  position: relative;
+}
+
+.section-white {
+  background: var(--bg-white);
+}
+
+.section-gray {
+  background: var(--bg);
+}
+
+.section-dark {
+  background: var(--surface-dark);
+  color: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--sp-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.section-header p {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 520px;
+}
+
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: var(--weight-semi);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.section-desc {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 520px;
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ==========================================
+   GSAP ANIMATION BASE CLASSES
+   ========================================== */
+.gs-reveal {
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.gs-reveal-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* For elements that need initial positioning before GSAP takes over */
+[data-animate] {
+  will-change: transform, opacity;
+}
+
+/* ==========================================
+   UTILITIES
+   ========================================== */
+.w-full { width: 100%; }
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.overflow-hidden { overflow: hidden; }
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .show-mobile-only { display: none !important; }
+}
