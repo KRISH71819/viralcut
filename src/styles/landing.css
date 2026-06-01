@@ -49,15 +49,8 @@
 
 /* Orbs removed as per user request */
 
-/* Set major landing sections to transparent so floating glows show through */
-.hero, .section, .logo-marquee, .footer {
-  position: relative;
-  z-index: 2;
-  background: transparent !important;
-}
-
 body {
-  background: var(--bg);
+  background-color: #f7f7f7;
   position: relative;
   overflow-x: hidden;
 }
@@ -66,6 +59,7 @@ body {
    HERO
    ========================================== */
 .hero {
+  background: linear-gradient(to bottom, #f7f7f7 0%, #f7f7f7 calc(100% - 150px), #ffffff 100%);
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -233,73 +227,67 @@ body {
 .hero-stat-right { right: 5%; top: 80px; }
 
 /* ---- Hero Metrics Marquee (Reelo-style Pill Marquee) ---- */
-.hero-metrics-marquee {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-  border: none;
-  padding: var(--sp-4) 0;
-  margin-top: var(--sp-8);
-  /* Elegant linear gradient mask fading out at left and right edges */
-  mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-top: var(--sp-8);
+    position: relative;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
 }
 
-.hero-metrics-track {
-  display: flex;
-  gap: var(--sp-4); /* spacing between pills */
-  width: max-content;
-  white-space: nowrap;
-  will-change: transform;
-  animation: marquee-horizontal 28s linear infinite;
+.ticker {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
 }
 
-.hero-metrics-track:hover {
-  animation-play-state: paused;
+.pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin-right: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 999px;
+    background: #fff;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.metric-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
-  background: var(--bg-white);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: var(--r-full);
-  padding: 8px 18px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+.pill i {
+    font-size: 16px;
+    color: #000;
 }
 
-.metric-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-  border-color: rgba(0,0,0,0.1);
+.pill span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    line-height: 27px;
 }
 
-.metric-item svg {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  overflow: visible;
-}
-
-.metric-item svg circle {
-  fill: #DCFFDB !important; /* soft green background */
-  stroke: rgba(96, 191, 8, 0.25) !important; /* thin green outline */
-}
-
-.metric-item svg polyline {
-  stroke: #60BF08 !important; /* vibrant green checkmark */
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 /* ==========================================
@@ -311,140 +299,77 @@ body {
    COMPARISON TABLE (Why ViralCut - Reelo Layout)
    ========================================== */
 .section-compare {
-  background: var(--bg);
+  background-color: #ffffff;
   padding: var(--section-pad) 0;
 }
 
 .compare-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-6);
-  max-width: 900px;
+  gap: var(--sp-4);
   margin: 0 auto;
 }
 
-.compare-col {
-  background: #F5F5F5; /* very soft gray background matching Reelo screenshot */
-  border-radius: 24px;
-  padding: var(--sp-8) var(--sp-6);
-  border: 1px solid rgba(0,0,0,0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.4s var(--ease-out);
+.reelo-wrap {
+    width: 100%;
 }
 
-.compare-col:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+.reelo-head {
+    background: #f2f2f2;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+    text-align: center;
+    padding: 16px 10px;
+    margin-bottom: 8px;
 }
 
-.compare-col-head {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--ink);
-  margin-bottom: var(--sp-8);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  background: #EAEAEA; /* uniform gray capsule background matching Reelo exactly */
-  border: 1px solid rgba(0,0,0,0.04);
-  border-radius: 100px;
-  padding: 6px 22px;
-  text-align: center;
-  white-space: nowrap;
+.reelo-head h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
 }
 
-.compare-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  width: 100%;
-  max-width: 200px;
+.reelo-card {
+    background: #f2f2f2;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+    padding: 10px 18px;
 }
 
-.compare-list li {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  line-height: 1.4;
-  text-align: left;
+.reelo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
 }
 
-.compare-list-bad li {
-  color: var(--text-secondary);
+.reelo-row i {
+    font-size: 20px;
+    color: #63c414;
 }
 
-.compare-list-bad li::before {
-  content: '✕';
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
+.reelo-row span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    line-height: 24px;
 }
 
-/* Active Highlighted Column (ViralCut) */
-.compare-col-highlight {
-  background: var(--bg-white) !important; /* solid white card matching Reelo exactly */
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-}
-
-.compare-col-highlight .compare-col-head {
-  background: #EAEAEA; /* identical header pill background */
-  color: var(--ink);
-  border-color: rgba(0,0,0,0.04);
-  font-weight: 600;
-}
-
-.compare-col-highlight .compare-list li {
-  color: var(--ink); /* solid black text for active features */
-  font-weight: 600;
-}
-
-.compare-list-good li::before {
-  content: '✓';
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #DCFFDB; /* soft green fill matching Reelo */
-  color: #60BF08; /* vibrant dark green checkmark */
-  border: 1.5px solid rgba(96, 191, 8, 0.2);
-  font-size: 10px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .compare-grid { grid-template-columns: 1fr; max-width: 400px; }
 }
 
 /* ==========================================
    BENTO GRID (How It Works)
    ========================================== */
-.section-bento { background: var(--bg); }
+.section-bento { background-color: #f7f7f7; }
 
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sp-5);
-  max-width: 960px;
   margin: 0 auto;
   perspective: 1200px; /* Enable deep 3D perspective space */
 }
@@ -846,7 +771,6 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  max-width: 320px;
 }
 
 .bento-metric-pill {
@@ -871,7 +795,7 @@ body {
 .bento-metric-fade { color: var(--text-secondary); }
 
 @media (max-width: 700px) {
-  .bento-grid { grid-template-columns: 1fr; max-width: 500px; }
+  .bento-grid { grid-template-columns: 1fr; }
   .bento-collage { width: 220px; height: 140px; }
   .bento-collage-2 { width: 100px; height: 100px; }
 }
@@ -879,13 +803,12 @@ body {
 /* ==========================================
    FEATURES GRID
    ========================================== */
-.section-features { background: var(--surface); }
+.section-features { background-color: #ffffff; }
 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-5);
-  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -939,13 +862,12 @@ body {
 /* ==========================================
    PORTFOLIO GRID
    ========================================== */
-.section-portfolio { background: var(--bg); }
+.section-portfolio { background-color: #f7f7f7; }
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-4);
-  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -1000,115 +922,156 @@ body {
 /* ==========================================
    PRICING
    ========================================== */
-.section-pricing { background: var(--surface); }
+.section-pricing { background-color: #ffffff; font-family: 'Manrope', sans-serif; }
 
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-5);
-  max-width: 960px;
-  margin: 0 auto;
-  align-items: stretch;
+.prc-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-6);
+    max-width: 940px;
+    margin: 50px auto;
 }
 
-.pricing-card {
-  background: var(--bg-white);
-  border-radius: var(--r-2xl);
-  border: 1px solid var(--border);
-  padding: var(--sp-8) var(--sp-6);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.prc-card {
+    width: 100%;
 }
 
-.pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+.prc-card.prc-dark {
+    background: #000;
+    color: #fff;
+    border-radius: 18px;
+    padding: 28px;
+    position: relative;
 }
 
-.pricing-card-popular {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
+.prc-tit {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 14px;
 }
 
-.pricing-popular-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #66CBFD;
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 14px;
-  border-radius: 100px;
-  white-space: nowrap;
+.prc-des {
+    font-size: 16px;
+    line-height: 1.45;
+    color: #444;
+    margin-bottom: 24px;
 }
 
-.pricing-name {
-  font-family: var(--font-head);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-semi);
-  margin-bottom: var(--sp-2);
+.prc-dark .prc-des {
+    color: #e8e8e8;
 }
 
-.pricing-tagline {
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--sp-6);
+.prc-prc {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 26px;
 }
 
-.pricing-card-popular .pricing-tagline { color: rgba(255,255,255,0.7); }
-
-.pricing-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--sp-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  flex: 1;
+.prc-dol {
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1;
 }
 
-.pricing-features li {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
+.prc-num {
+    font-size: 58px;
+    font-weight: 500;
+    line-height: 1;
 }
 
-.pricing-card-popular .pricing-features li { color: rgba(255,255,255,0.8); }
-.pricing-card-popular .pricing-features li svg { color: #66CBFD; }
-
-.pricing-note {
-  text-align: center;
-  font-size: var(--text-xs);
-  color: rgba(255,255,255,0.5);
-  margin-top: var(--sp-3);
+.prc-mon {
+    font-size: 16px;
+    margin-left: 6px;
+    margin-bottom: 8px;
 }
 
-.btn-block { width: 100%; text-align: center; justify-content: center; }
-.btn-white {
-  background: #fff;
-  color: var(--ink);
-  border: 1px solid #fff;
+.prc-line {
+    height: 1px;
+    background: #d9d9d9;
+    margin-bottom: 22px;
 }
-.btn-white:hover { background: #f5f5f5; }
 
-@media (max-width: 800px) {
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+.prc-dark .prc-line {
+    background: rgba(255, 255, 255, .15);
+}
+
+.prc-lst {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.prc-lst li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.prc-dark .prc-lst li {
+    color: #fff;
+}
+
+.prc-lst i {
+    font-size: 15px;
+}
+
+.prc-btn {
+    width: 100%;
+    height: 46px;
+    border-radius: 999px;
+    border: 1px solid #d9d9d9;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 14px;
+    color: #000;
+}
+
+.prc-dark .prc-btn {
+    background: #fff;
+    border: none;
+    color: #000;
+}
+
+.prc-note {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #cfcfcf;
+}
+
+.prc-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    background: #2b2b2b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prc-badge i {
+    color: #fff;
+    font-size: 18px;
+}
+
+@media (max-width: 1100px) {
+    .prc-wrap { flex-direction: column; align-items: center; }
+    .prc-card { width: 100%; }
 }
 
 /* ==========================================
    TESTIMONIALS
    ========================================== */
 .section-testimonials {
+  background-color: #f7f7f7;
   overflow: hidden;
-  background: var(--bg);
   padding: var(--section-pad) 0;
 }
 
@@ -1207,7 +1170,7 @@ body {
 /* ==========================================
    FAQ
    ========================================== */
-.section-faq { background: var(--surface); }
+.section-faq { background-color: #ffffff; }
 
 .faq-list {
   display: flex;
@@ -1263,13 +1226,12 @@ body {
 /* ==========================================
    INSIGHTS / BLOG
    ========================================== */
-.section-insights { background: var(--bg); }
+.section-insights { background-color: #f7f7f7; }
 
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--sp-5);
-  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -1339,10 +1301,9 @@ body {
 /* ==========================================
    CONTACT FORM
    ========================================== */
-.section-contact { background: var(--surface); }
+.section-contact { background-color: #ffffff; }
 
 .contact-form {
-  max-width: 560px;
   margin: 0 auto;
 }
 
@@ -1391,7 +1352,7 @@ body {
 /* ==========================================
    CTA BANNER
    ========================================== */
-.section-cta-banner { background: var(--bg); padding: var(--sp-12) var(--sp-6); }
+.section-cta-banner { background-color: #ffffff; padding: var(--sp-12) var(--sp-6); }
 
 .cta-banner {
   background: var(--ink);
@@ -1416,7 +1377,7 @@ body {
    FOOTER
    ========================================== */
 .footer {
-  background: var(--bg);
+  background-color: #f7f7f7;
   border-top: 1px solid var(--border);
   padding-top: var(--sp-16);
 }
@@ -1558,4 +1519,24 @@ body {
   .hero-phone-left { left: 2%; }
   .hero-phone-right { right: 2%; }
   .hero-stat-badge { display: none; }
+}
+
+/* ==========================================
+   VIEWPORT GLOW
+   ========================================== */
+.viewport-glow {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    pointer-events: none;
+    z-index: 9999;
+    background: linear-gradient(
+        to top,
+        rgba(255,255,255,0.9) 0%,
+        rgba(255,255,255,0.45) 35%,
+        rgba(255,255,255,0.1) 70%,
+        transparent 100%
+    );
 }
