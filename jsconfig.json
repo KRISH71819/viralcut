@@ -1,0 +1,10 @@
+/**
+ * jsconfig.json — Path aliases for Next.js
+ */
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
