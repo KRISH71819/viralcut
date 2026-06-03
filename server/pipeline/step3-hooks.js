@@ -59,43 +59,76 @@ Return ONLY valid JSON with this exact structure:
 export async function findHooks(transcript) {
   const userPrompt = `Here is the full transcript to analyze:\n\n${transcript.text}\n\n---\n\nWord-level timestamps (first 500 words for reference):\n${JSON.stringify(transcript.words.slice(0, 500), null, 0)}\n\nTotal duration: ${transcript.words.length > 0 ? transcript.words[transcript.words.length - 1].end.toFixed(1) : '0'}s\nTotal words: ${transcript.words.length}`;
 
-  // PRIMARY: Try Gemma 4 27B via Groq
+  // PRIMARY: Try Gemma 4 31B via Google AI
   try {
-    console.log('[Step 3] Attempting hook finding with Gemma 4 27B (Groq)...');
+    console.log('[Step 3] Attempting hook finding with Gemma 4 31B (Google AI)...');
 
-    const groq = getGroqClient();
-    const response = await groq.chat.completions.create({
-      model: 'gemma2-9b-it', // Groq's latest available Gemma model
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: 0.7,
-      max_tokens: 4096,
-      response_format: { type: 'json_object' },
-    });
+    const model = getGeminiModel('gemma-4-31b');
+    let result;
+    let retries = 3;
+    
+    while (retries > 0) {
+      try {
+        result = await model.generateContent([
+          SYSTEM_PROMPT + '\n\n' + userPrompt,
+        ]);
+        break; // Success
+      } catch (err) {
+        if (err.message && (err.message.includes('429') || err.message.includes('Too Many Requests'))) {
+          retries--;
+          if (retries === 0) throw err;
+          console.warn(`[Step 3] Gemma Rate Limit (429). Retrying in 5 seconds...`);
+          await new Promise((r) => setTimeout(r, 5000));
+        } else {
+          throw err;
+        }
+      }
+    }
 
-    const content = response.choices?.[0]?.message?.content;
-    if (!content) {
+    const responseText = result.response.text();
+    if (!responseText) {
       throw new Error('Empty response from Gemma model');
     }
 
-    const result = JSON.parse(content);
-    validateClipsResponse(result);
+    let parsed;
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      parsed = JSON.parse(jsonMatch[0]);
+    } else {
+      parsed = JSON.parse(responseText);
+    }
 
-    console.log(`[Step 3] Gemma found ${result.clips.length} hooks successfully`);
-    return result;
+    validateClipsResponse(parsed);
+
+    console.log(`[Step 3] Gemma found ${parsed.clips.length} hooks successfully`);
+    return parsed;
 
   } catch (primaryError) {
     // FALLBACK: Silently catch and try Gemini Flash Lite
     console.warn(`[Step 3] Gemma failed (${primaryError.message}), falling back to Gemini Flash Lite...`);
 
     try {
-      const model = getGeminiModel('gemini-2.0-flash-lite');
-
-      const result = await model.generateContent([
-        SYSTEM_PROMPT + '\n\n' + userPrompt,
-      ]);
+      const model = getGeminiModel('gemini-3.1-flash-lite');
+      let result;
+      let retries = 3;
+      
+      while (retries > 0) {
+        try {
+          result = await model.generateContent([
+            SYSTEM_PROMPT + '\n\n' + userPrompt,
+          ]);
+          break; // Success
+        } catch (err) {
+          if (err.message && (err.message.includes('429') || err.message.includes('Too Many Requests'))) {
+            retries--;
+            if (retries === 0) throw err;
+            console.warn(`[Step 3] Gemini Rate Limit (429). Retrying in 5 seconds...`);
+            await new Promise((r) => setTimeout(r, 5000));
+          } else {
+            throw err;
+          }
+        }
+      }
 
       const responseText = result.response.text();
       if (!responseText) {

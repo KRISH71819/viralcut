@@ -23,7 +23,7 @@ export function getGeminiClient() {
  * @param {string} modelName - Model ID (default: gemini-2.0-flash-lite)
  * @returns {import('@google/generative-ai').GenerativeModel}
  */
-export function getGeminiModel(modelName = 'gemini-2.0-flash-lite') {
+export function getGeminiModel(modelName = 'gemini-3.1-flash-lite') {
   const client = getGeminiClient();
   return client.getGenerativeModel({
     model: modelName,

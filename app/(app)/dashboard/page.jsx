@@ -50,17 +50,10 @@ export default function DashboardPage() {
       setIsPlaying(true);
       setVideoProgress(0);
       
-      // Auto playback trigger
       setTimeout(() => {
         if (videoRef.current) {
-          videoRef.current.muted = isMuted;
-          videoRef.current.play().catch(() => {
-            // Browser blocked unmuted autoplay, try muted autoplay
-            if (videoRef.current) {
-              videoRef.current.muted = true;
-              videoRef.current.play().catch(() => setIsPlaying(false));
-            }
-          });
+          // Do not force autoplay so native controls handle it cleanly without mute-blocks
+          setIsPlaying(false);
         }
       }, 50);
     }
@@ -536,8 +529,7 @@ export default function DashboardPage() {
                     {/* 1. Main source video stream */}
                     <video 
                       ref={videoRef}
-                      autoPlay 
-                      muted={isMuted} 
+                      controls
                       playsInline 
                       style={{ 
                         width: '100%', 
@@ -550,7 +542,6 @@ export default function DashboardPage() {
                       onLoadedMetadata={(e) => {
                         e.target.currentTime = selectedClip.startTime;
                         setCurrentVideoTime(selectedClip.startTime);
-                        e.target.muted = isMuted;
                       }}
                       onTimeUpdate={(e) => {
                         const video = e.target;
@@ -587,49 +578,7 @@ export default function DashboardPage() {
                       />
                     )}
 
-                    {/* 3. Center play/pause tap overlay */}
-                    <div 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const nextPlay = !isPlaying;
-                        setIsPlaying(nextPlay);
-                        if (videoRef.current) {
-                          if (nextPlay) {
-                            videoRef.current.play().catch(() => setIsPlaying(false));
-                          } else {
-                            videoRef.current.pause();
-                          }
-                        }
-                      }}
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        zIndex: 15,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                        background: isPlaying ? 'transparent' : 'rgba(0,0,0,0.45)',
-                        transition: 'background 0.2s'
-                      }}
-                    >
-                      {!isPlaying && (
-                        <div style={{
-                          background: 'var(--coral)',
-                          borderRadius: 'var(--r-full)',
-                          width: '44px',
-                          height: '44px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#fff',
-                          fontSize: '16px',
-                          boxShadow: 'var(--shadow-md)',
-                        }}>
-                          <i className="fa-solid fa-play" style={{ marginLeft: '3px' }}></i>
-                        </div>
-                      )}
-                    </div>
+                    {/* Custom play button removed in favor of native controls */}
 
                     {/* 4. Glowing centered Hormozi-style Captions overlay */}
                     {activeWord && (
@@ -653,44 +602,7 @@ export default function DashboardPage() {
                       </div>
                     )}
 
-                    {/* 5. Mute/Unmute & Play/Pause Floating Controllers (Top Right) */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '12px',
-                      right: '12px',
-                      zIndex: 35,
-                      display: 'flex',
-                      gap: '6px'
-                    }}>
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const nextMute = !isMuted;
-                          setIsMuted(nextMute);
-                          if (videoRef.current) videoRef.current.muted = nextMute;
-                        }}
-                        style={{
-                          background: 'rgba(0, 0, 0, 0.65)',
-                          backdropFilter: 'blur(4px)',
-                          border: '1px solid rgba(255,255,255,0.15)',
-                          color: '#fff',
-                          borderRadius: 'var(--r-full)',
-                          width: '28px',
-                          height: '28px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: 'pointer',
-                          fontSize: '11px',
-                          transition: 'all 0.2s',
-                          padding: 0
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.85)'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.65)'}
-                      >
-                        <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
-                      </button>
-                    </div>
+                    {/* Mute/Unmute Floating Controllers removed in favor of native controls */}
 
                     {/* Active B-Roll indicator tag (Top Left) */}
                     {activeBRoll && (
@@ -716,37 +628,7 @@ export default function DashboardPage() {
                       </div>
                     )}
 
-                    {/* 6. Custom Seek/Progress horizontal bar at the bottom */}
-                    <div 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const clickX = e.clientX - rect.left;
-                        const pct = clickX / rect.width;
-                        const targetTime = selectedClip.startTime + (pct * selectedClip.duration);
-                        if (videoRef.current) {
-                          videoRef.current.currentTime = targetTime;
-                          setCurrentVideoTime(targetTime);
-                        }
-                      }}
-                      style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: '4px',
-                        background: 'rgba(255,255,255,0.2)',
-                        zIndex: 35,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      <div style={{
-                        width: `${videoProgress}%`,
-                        height: '100%',
-                        background: 'linear-gradient(90deg, var(--accent-blue), var(--accent-pink))',
-                        transition: 'width 0.1s linear'
-                      }}></div>
-                    </div>
+                    {/* Custom Seek/Progress horizontal bar removed in favor of native controls */}
                   </div>
                 );
               })()}
